@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Smart Watch Product Page</title>
+  </head>
+  <body>
+    <div class="product-container">
+      <div class="product-image-container">
+        <img
+          src="/assets/lg-a 3.png"
+          alt="Smart Watch"
+          class="product-image"
+          id="mainImage"
+        />
+      </div>
+      <div class="product-info">
+        <h1>Classy Modern Smart watch</h1>
+        <div class="price">
+          <span class="original-price">$99.00</span>
+          <span class="current-price">$79.00</span>
+        </div>
+        <p class="description">
+          I must explain to you how all this mistaken idea of denoun cing ple
+          praising pain was born and I will give you a complete account of the
+          system, and expound the actual teaching.
+        </p>
+        <div class="color-options">
+          <h3>Band Color</h3>
+          <div
+            class="color-option active"
+            style="background-color: #816bff"
+            data-color="purple"
+            data-image="/assets/lg-a 3.png"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #1fcec9"
+            data-color="turquoise"
+            data-image="/assets/cyan.png"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #4b97d3"
+            data-color="blue"
+            data-image="/assets/blue.png"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #3b4747"
+            data-color="black"
+            data-image="/assets//black.png"
+          ></div>
+        </div>
+        <div class="size-options">
+          <h3>Wrist Size</h3>
+          <div class="size-option" data-size="S">S <span>$69</span></div>
+          <div class="size-option active" data-size="M">M <span>$79</span></div>
+          <div class="size-option" data-size="L">L <span>$89</span></div>
+          <div class="size-option" data-size="XL">XL <span>$99</span></div>
+        </div>
+        <div class="cart-section">
+          <div class="quantity-controls">
+            <button class="quantity-btn" data-action="decrease">-</button>
+            <span id="quantity">0</span>
+            <button class="quantity-btn" data-action="increase">+</button>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="floating-checkout" id="checkoutButton">
+      Checkout (<span id="cartCount">0</span>)
+    </div>
+
+    <div class="modal" id="cartModal">
+      <div class="modal-content">
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <button onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
