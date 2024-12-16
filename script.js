@@ -18,6 +18,12 @@ const cartModal = document.getElementById("cartModal");
 const cartItems = document.getElementById("cartItems");
 const mainImage = document.getElementById("mainImage");
 
+// Wishlist functionality
+const wishlistBtn = document.querySelector(".wishlist-btn");
+wishlistBtn.addEventListener("click", () => {
+  wishlistBtn.classList.toggle("active");
+});
+
 // Color selection
 colorOptions.forEach((option) => {
   option.addEventListener("click", () => {

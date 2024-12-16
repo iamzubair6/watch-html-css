@@ -280,3 +280,77 @@ button {
   color: white;
   cursor: pointer;
 }
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+  fill: #e4e5e9;
+}
+
+.star.filled {
+  fill: #ffc107;
+}
+
+.star.half-filled {
+  position: relative;
+  overflow: hidden;
+}
+
+.star.half-filled:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #ffc107;
+  z-index: 1;
+}
+
+.rating-text {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.wishlist-btn {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wishlist-btn svg {
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.wishlist-btn:hover {
+  border-color: #ff4444;
+}
+
+.wishlist-btn:hover svg {
+  color: #ff4444;
+}
+
+.wishlist-btn.active {
+  border-color: #ff4444;
+}
+
+.wishlist-btn.active svg {
+  color: #ff4444;
+  fill: #ff4444;
+}
