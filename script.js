@@ -42,7 +42,7 @@ quantityBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.dataset.action === "increase") {
       state.quantity++;
-    } else if (btn.dataset.action === "decrease" && state.quantity > 0) {
+    } else if (btn.dataset.action === "decrease" && state.quantity > 1) {
       state.quantity--;
     }
     quantityDisplay.textContent = state.quantity;
@@ -70,28 +70,35 @@ function updateCart() {
   const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
   document.getElementById("cartCount").textContent = totalItems;
 
+  // Calculate total price
+  const totalPrice = state.cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
   // Update cart modal content
   cartItems.innerHTML = state.cart
     .map(
       (item) => `
                 <div class="cart-item">
-                    <img src="${item.image}" alt="Smart Watch">
-                    <div>
-                        <h3>Smart Watch</h3>
-                        <p>Color: ${item.color}</p>
-                        <p>Size: ${item.size}</p>
-                        <p>Quantity: ${item.quantity}</p>
+                    <div class="item-info">
+                        <img src="${item.image}" alt="Smart Watch">
+                        <div>Classy Modern Smart watch</div>
                     </div>
-                    <div>
-                        <p>$${(item.price * item.quantity).toFixed(2)}</p>
-                        <button onclick="removeFromCart(${
-                          item.id
-                        })">Remove</button>
-                    </div>
+                    <div>${item.color}</div>
+                    <div>${item.size}</div>
+                    <div>${item.quantity}</div>
+                    <div>$${(item.price * item.quantity).toFixed(2)}</div>
                 </div>
             `
     )
     .join("");
+
+  // Update totals
+  document.getElementById("totalQuantity").textContent = totalItems;
+  document.getElementById("totalPrice").textContent = `$${totalPrice.toFixed(
+    2
+  )}`;
 }
 
 // Remove from cart
@@ -105,7 +112,7 @@ function removeFromCart(id) {
 
 // Modal controls
 checkoutButton.addEventListener("click", () => {
-  cartModal.style.display = "block";
+  cartModal.style.display = "flex";
 });
 
 function closeModal() {
@@ -117,4 +124,8 @@ window.addEventListener("click", (e) => {
   if (e.target === cartModal) {
     closeModal();
   }
+});
+
+window.addEventListener("load", () => {
+  cartModal.style.display = "none";
 });

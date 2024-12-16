@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Smart Watch Product Page</title>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="product-container">
@@ -64,7 +65,7 @@
         <div class="cart-section">
           <div class="quantity-controls">
             <button class="quantity-btn" data-action="decrease">-</button>
-            <span id="quantity">0</span>
+            <span id="quantity">1</span>
             <button class="quantity-btn" data-action="increase">+</button>
           </div>
           <button class="add-to-cart">Add to Cart</button>
@@ -75,15 +76,41 @@
     <div class="floating-checkout" id="checkoutButton">
       Checkout (<span id="cartCount">0</span>)
     </div>
-
+    <!-- 
     <div class="modal" id="cartModal">
       <div class="modal-content">
         <h2>Your Cart</h2>
         <div id="cartItems"></div>
         <button onclick="closeModal()">Close</button>
       </div>
+    </div> -->
+    <div class="modal" id="cartModal">
+      <div class="modal-content">
+        <h2>Your Cart</h2>
+        <div class="cart-table">
+          <div class="cart-headers cart-item">
+            <div>Item</div>
+            <div>Color</div>
+            <div>Size</div>
+            <div>Qnt</div>
+            <div>Price</div>
+          </div>
+          <div id="cartItems"></div>
+        </div>
+        <div class="cart-total">
+          <h3>Total</h3>
+          <div>
+            <span id="totalQuantity">0</span> items
+            <span id="totalPrice" class="ml-4">$0.00</span>
+          </div>
+        </div>
+        <div class="cart-buttons">
+          <button class="continue-shopping" onclick="closeModal()">
+            Continue Shopping
+          </button>
+          <button class="checkout-button">Checkout</button>
+        </div>
+      </div>
     </div>
-
-    <script src="script.js"></script>
   </body>
 </html>
