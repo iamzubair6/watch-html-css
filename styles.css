@@ -132,17 +132,23 @@ button {
   font-size: 20px;
   font-weight: 700;
 }
-
+#cartCount {
+  background-color: white;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
 .floating-checkout {
   position: fixed;
   bottom: 20px;
   right: 40%;
-  background-color: #f39c12;
-  color: white;
+  background-color: #ffbb5a;
+  color: black;
   padding: 12px 24px;
   border-radius: 30px;
   cursor: pointer;
   display: none;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .modal {
