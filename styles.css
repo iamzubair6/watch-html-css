@@ -223,12 +223,31 @@ button {
 }
 
 .cart-total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-top: 24px;
   padding-top: 24px;
-  /* border-top: 1px solid #e5e7eb; */
+}
+
+.cart-total-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 2fr;
+  align-items: center;
+}
+
+.total-label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.total-quantity {
+  grid-column: 5;
+  font-weight: 700;
+}
+
+.total-price {
+  grid-column: 6;
+  margin-left: 12px;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .cart-buttons {
@@ -251,7 +270,7 @@ button {
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
-  background: #6366f1;
+  background: #6576ff;
   color: white;
   cursor: pointer;
 }
