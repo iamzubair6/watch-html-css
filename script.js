@@ -3,6 +3,7 @@ const state = {
   cart: [],
   selectedColor: "purple",
   selectedSize: "M",
+  selectedPrice: 79,
   quantity: 1,
 };
 
@@ -34,6 +35,10 @@ sizeOptions.forEach((option) => {
     sizeOptions.forEach((opt) => opt.classList.remove("active"));
     option.classList.add("active");
     state.selectedSize = option.dataset.size;
+    state.selectedPrice = parseInt(
+      option.querySelector("span").textContent.replace("$", "")
+    );
+    updatePrice();
   });
 });
 
@@ -46,8 +51,15 @@ quantityBtns.forEach((btn) => {
       state.quantity--;
     }
     quantityDisplay.textContent = state.quantity;
+    updatePrice();
   });
 });
+
+// Update price
+function updatePrice() {
+  const total = state.selectedPrice * state.quantity;
+  document.querySelector(".current-price").textContent = `$${total.toFixed(2)}`;
+}
 
 // Add to cart
 addToCartBtn.addEventListener("click", () => {
@@ -56,7 +68,8 @@ addToCartBtn.addEventListener("click", () => {
     color: state.selectedColor,
     size: state.selectedSize,
     quantity: state.quantity,
-    price: 79.0,
+    price: state.selectedPrice,
+    totalPrice: state.selectedPrice * state.quantity,
     image: document.querySelector(".color-option.active").dataset.image,
   };
 
@@ -70,13 +83,8 @@ function updateCart() {
   const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
   document.getElementById("cartCount").textContent = totalItems;
 
-  // Calculate total price
-  const totalPrice = state.cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const totalPrice = state.cart.reduce((sum, item) => sum + item.totalPrice, 0);
 
-  // Update cart modal content
   cartItems.innerHTML = state.cart
     .map(
       (item) => `
@@ -87,14 +95,22 @@ function updateCart() {
                     </div>
                     <div>${item.color}</div>
                     <div>${item.size}</div>
-                    <div>${item.quantity}</div>
-                    <div>$${(item.price * item.quantity).toFixed(2)}</div>
+                    <div class="text-center">${item.quantity}</div>
+                    <div class="font-bold">$${item.totalPrice.toFixed(2)}</div>
+                    <div>
+                        <button class="remove-item" onclick="removeFromCart(${
+                          item.id
+                        })">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             `
     )
     .join("");
 
-  // Update totals
   document.getElementById("totalQuantity").textContent = totalItems;
   document.getElementById("totalPrice").textContent = `$${totalPrice.toFixed(
     2

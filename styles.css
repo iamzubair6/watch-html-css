@@ -188,10 +188,25 @@ button {
 
 .cart-item {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 0.5fr;
   align-items: center;
   padding: 12px 0;
   border-bottom: 1px solid #e5e7eb;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #ff4444;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-item:hover {
+  color: #cc0000;
 }
 
 .item-info {
@@ -213,7 +228,7 @@ button {
   align-items: center;
   margin-top: 24px;
   padding-top: 24px;
-  border-top: 1px solid #e5e7eb;
+  /* border-top: 1px solid #e5e7eb; */
 }
 
 .cart-buttons {
